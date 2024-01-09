@@ -1,0 +1,85 @@
+/* Reset styles and set font-family */
+* {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+body {
+    background-color: #ffb7ce;
+}
+
+/* Hero section styles */
+.hero {
+    height: 100%;
+    width: 100%;
+    background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(j4.jpg);
+    background-position: center;
+    background-size: cover;
+    position: absolute;
+}
+
+/* Form box styles */
+.form-box {
+    width: 380px;
+    height: 480px;
+    position: relative;
+    margin: 6% auto;
+    background: #ffff;
+    padding: 5px;
+    overflow: hidden;
+}
+
+/* Button box styles */
+.button-box {
+    width: 220px;
+    margin: 35px auto;
+    position: relative;
+    box-shadow: 0 0 20px 9px #ff61241f;
+    border-radius: 30px;
+}
+
+/* Toggle button styles */
+.toggle-btn {
+    padding: 10px 25px;
+    cursor: pointer;
+    background: #29f700;
+    border: 0;
+    outline: none;
+    position: relative;
+}
+
+/* Submit button styles */
+.submit-btn {
+    width: 85%;
+    padding: 10px 30px;
+    cursor: pointer;
+    display: block;
+    margin: auto;
+    background: #29f700; /* Set the background color to green */
+    border: 0;
+    outline: none;
+    border-radius: 30px;
+}
+
+/* Checkbox styles */
+.chech-box {
+    margin: 30px 10px 30px 0;
+}
+
+/* Additional styles */
+span {
+    color: #777;
+    font-size: 12px;
+    bottom: 63px;
+    position: absolute;
+}
+
+/* Login and Register button positions */
+#login {
+    left: 50px;
+}
+
+#register {
+    left: 450px;
+}

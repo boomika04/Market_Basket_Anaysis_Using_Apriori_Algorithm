@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ product_detail.name }} Details</title>
+</head>
+<body>
+    <h1>{{ product_detail.name }} Details</h1>
+    {% load static %}
+    <!-- Display the product image -->
+    <a href="{% url 'result' product_detail.name %}">
+        <img src="{% static 'images/'|add:product_detail.img_url %}" alt="{{ product_detail.name }}">
+    </a>
+    <h1>for iframes</h1>
+    
+    <!-- Display the product rate and offer -->
+    <p>Rate: {{ product_detail.rate }}</p>
+    <p>Offer: {{ product_detail.offer }}</p>
+    
+    <h2>Top 5 Items Bought Together with '{{ product_detail.name }}'</h2>
+    <ul>
+
+        {% for top_item in top5_items %}
+            <li>
+                {% if top_item.name != 'N/A' %}
+                    <a href="{% url 'result' top_item.name %}">
+                        <img src="{% static 'images/'|add:top_item.img_url %}" alt="{{ top_item.name }}">
+                    </a>
+                {% else %}
+                    <!-- Add a fallback behavior when top_item.name is 'N/A' -->
+                    <span>{{ top_item.name }}</span>
+                {% endif %}
+
+                <!-- Display the top item's details -->
+                <p>Name: {{ top_item.name }}</p>
+                <p>Rate: {{ top_item.rate }}</p>
+                <p>Offer: {{ top_item.offer }}</p>
+            </li>
+        {% empty %}
+            <li>No top items found.</li>
+        {% endfor %}
+    </ul>
+    <!-- You can add more details here if needed -->
+
+    <!-- Add a link to go back to the product list -->
+    <a href="{% url 'index' %}">Back to Product List</a>
+</body>
+</html>

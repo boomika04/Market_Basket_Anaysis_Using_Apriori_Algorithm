@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en"> {% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Fruits</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        /* Your existing CSS styles here */
+@import url('https://fonts.googleapis.com/css2?family=Arvo&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arvo', sans-serif;
+}
+body {
+    background: url('/static/images/bg1.jpg') no-repeat center fixed;
+    background-size: cover;
+}
+#navbar {
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    padding: .5rem 5rem;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, .5);
+    background: black;
+}
+
+.navbar .navbar-brand {
+    font-size: 25px;
+    font-weight: 800;
+    color: #29f700 !important;
+}
+
+#navbarSupportedContent a {
+    color: #fff;
+    border-bottom: 2px solid transparent;
+}
+
+#navbarSupportedContent a:hover {
+    border-bottom: 2px solid #29f700;
+}
+
+#navbarSupportedContent button {
+    background: #29f700;
+    width: 5rem;
+    border-radius: 15px;
+}
+
+section {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#home {
+    background: url(main4.jpg);
+    background-repeat: no-repeat, no-repeat, no-repeat;
+    max-height: 600px;
+    background-size: 1800px;
+    background-position: center;
+    flex-direction: column;
+    background-repeat: no-repeat;
+    text-align: right;
+}
+
+#home h1 {
+    font-size: 100px;
+    color: black;
+    letter-spacing: 3px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-shadow: 0px 1px 0px #ccc,
+                 0px 2px 0px #ccc,
+                 0px 3px 0px #ccc,
+                 0px 4px 0px #ccc,
+                 0px 5px 0px #ccc,
+                 0px 6px 0px #ccc,
+                 0px 7px 0px #ccc;
+}
+
+#home p {
+    font-size: 30px;
+    color: black;
+}
+
+/*********About**********/
+.scroll-button {
+    background-color: transparent;
+    cursor: pointer;
+    text-align: center;
+    font-size: 24px;
+}
+#about {
+    background: linear-gradient(to right, #ea1d6f, #ea466b 100%);
+}
+
+#about h1 {
+    font-weight: 800;
+    font-size: 50px;
+    color: black;
+}
+
+#about p {
+    color: white;
+}
+
+
+/*****Categories********/
+
+.dropbtn {
+    background-color: #4CAF50;
+    color: black;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: transparent !important; /* Change the background color to black */
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: white !important; /* Change the text color to white */
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+.dropdown-item:hover {
+    background-color: transparent !important;
+}
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+    background-color: transparent !important;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.custom-card {
+    max-width: 80px; /* Adjust the max-width to your desired size */
+}
+ 
+.move-right{
+    margin-left: 140px;
+}
+        body {
+            background-color: #f2f2f2;
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 20px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .card {
+            border: 1px solid #ddd;
+            padding: 25px;
+            width: 260px;
+            background-color: #fff;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: relative;
+            margin: 20px;
+        }
+        .card img {
+            max-width: 100%;
+            height: auto;
+        }
+        .card-title {
+            font-size: 24px;
+            margin-top: 10px;
+            color: #333;
+        }
+        .price {
+            font-size: 20px;
+            color: #555;
+            margin-top: 5px;
+        }
+        .rating {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+        .rating span {
+            font-size: 24px;
+            color: #f2b01e;
+            margin-right: 4px;
+        }
+        .discount-label {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #e74c3c;
+            color: #fff;
+            padding: 5px;
+            font-size: 16px;
+        }
+        .btn-add-to-cart {
+            background-color: #29f700;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-size: 20px;
+        }
+        .btn-add-to-cart:hover {
+            background-color: #1e9e00;
+        }
+        .dropdown-menu-black {
+            background-color: black;
+        }
+        .dropdown-menu-black a {
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    {%load static %}
+    <nav class="navbar navbar-expand-lg navbar-dark" id="navbar">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="{% static 'images/icon.png'%}" alt="Logo" width="60" height="40" class="d-inline-block align-top">
+                Swap
+            </a>
+            <button class="navbar-toggler" type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent"
+                    aria-expanded="false">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse"
+                 id="navbarSupportedContent">
+                <ul class="navbar-nav mx-auto flex-row">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="categoriesDropdownLink" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categories</a>
+                        <div class="dropdown-menu dropdown-menu-black" aria-labelledby="categoriesDropdownLink">
+                            <a class="dropdown-item" href="fruits.html">Fruits</a>
+                            <a class="dropdown-item" href="veg.html">Vegetables</a>
+                            <a class="dropdown-item" href="dairy.html">Dairy Products</a>
+                            <a class="dropdown-item" href="dry.html">Dry Fruits</a>
+                            <a class="dropdown-item" href="cold.html">Cold Beverages</a>
+                            <a class="dropdown-item" href="spi.html">Spices</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+                <a href="addtocart.html" class="btn btn-success ms-2" style="background-color: black; border: none;">
+                    <i class="fas fa-shopping-cart" style="color: #29f700;"></i>
+                    <span id="cart-count" style="color: #29f700;">0</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+    <h1 style="text-align: center;">Vegetables</h1>
+    <section id="veg">
+        <div class="container">
+            <div class="card">
+                <a href="veg.html">
+                    <a href="{% url 'product' 'Carrot' %}">  
+                        <img src="{% static 'images/Carrot.jpg' %}" alt="Carrot" width="150"> 
+         
+                </a>
+                <h5 class="card-title">Carrot</h5>
+                <div class="rating">
+                    <span>&#9733;</span>
+                    <span>&#9733;</span>
+                    <span>&#9733;</span>
+                    <span>&#9733;</span>
+                    <span>&#9733;</span>
+                </div>
+                <div class="price">₹35.00(1Kg)</div>
+                <div class="discount-label">30% off</div>
+                <button id="add-to-cart-carrot" class="btn-add-to-cart">Add to cart</button>
+            </div>
+            <div class="card">
+                <a href="veg.html">
+                    <a href="{% url 'product' 'Potato' %}">  
+                        <img src="{% static 'images/Potato.jpg' %}" alt="Potato" width="150"> 
+         
+                </a>
+                <h5 class="card-title">Potato</h5>
+                <div class="rating">
+                    <span>&#9733;</span>
+                    <span>&#9733;</span>
+                    <span>&#9733;</span>
+                    <span>&#9733;</span>
+                    <span>&#9733;</span>
+                </div>
+                <div class="price">₹35.00(1Kg)</div>
+                <div class="discount-label">20% off</div>
+                <button id="add-to-cart-potato" class="btn-add-to-cart">Add to cart</button>
+            </div>
+            <div class="card">
+                <a href="veg.html">
+                    <a href="{% url 'product' 'Tomato' %}">  
+                        <img src="{% static 'images/Tomato.jpg' %}" alt="Tomato" width="150"> 
+         
+                </a>
+                <h5 class="card-title">Tomato</h5>
+                <div class="rating">
+                    <span>&#9733;</span>
+                    <span>&#9733;</span>
+                    <span>&#9733;</span>
+                    <span>&#9733;</span>
+                    <span>&#9733;</span>
+                </div>
+                <div class="price">₹20.00(1Kg)</div>
+                <div class="discount-label">50% off</div>
+                <button id="add-to-cart-tomato" class="btn-add-to-cart">Add to cart</button>
+            </div>
+            <div class="card">
+                <a href="veg.html">
+                    <a href="{% url 'product' 'Onion' %}">  
+                        <img src="{% static 'images/Onion.jpg' %}" alt="Onion" width="150"> 
+         
+                </a>
+                <h5 class="card-title">Onion</h5>
+                <div class="rating">
+                    <span>&#9733;</span>
+                    <span>&#9733;</span>
+                    <span>&#9733;</span>
+                    <span>&#9733;</span>
+                    <span>&#9733;</span>
+                </div>
+                <div class="price">₹30.00(1Kg)</div>
+                <div class="discount-label">25% off</div>
+                <button id="add-to-cart-onion" class="btn-add-to-cart">Add to cart</button>
+            </div>
+            <div class="card">
+                <a href="veg.html">
+                    <a href="{% url 'product' 'Beetroot' %}">  
+                        <img src="{% static 'images/Beetroot.jpg' %}" alt="Beetroot" width="150"> 
+         
+                </a>
+                <h5 class="card-title">Beetroot</h5>
+                <div class="rating">
+                    <span>&#9733;</span>
+                    <span>&#9733;</span>
+                    <span>&#9733;</span>
+                    <span>&#9733;</span>
+                    <span>&#9733;</span>
+                </div>
+                <div class="price">₹40(1Kg)</div>
+                <div class="discount-label">15% off</div>
+                <button id="add-to-cart-beetroot" class="btn-add-to-cart">Add to cart</button>
+            </div>
+        </div>
+    </section>
+    <script>
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        function updateCartCount() {
+            const cartCountElement = document.getElementById('cart-count');
+            if (cartCountElement) {
+                cartCountElement.innerText = cart.length.toString();
+            }
+        }
+        function addToCart(productId) {
+            const addButton = document.getElementById(`add-to-cart-${productId}`);
+            if (addButton && !addButton.disabled) {
+                const product = getProductById(productId); 
+                if (product) {
+                    cart.push(product);
+                    updateCartCount();
+                    addButton.disabled = true;
+                    localStorage.setItem('cart', JSON.stringify(cart));
+                }
+            }
+        }
+        function getProductById(productId) {
+                const products = [
+                {
+                    id: 'carrot',
+                    name: 'Carrot',
+                    price: 35.00,
+                    image: 'Carrot.jpg',
+                },
+                {
+                    id: 'potato',
+                    name: 'Potato',
+                    price: 35.00,
+                    image: 'Potato.jpg',
+                },
+                {
+                    id: 'tomato',
+                    name: 'Tomato',
+                    price: 20.00,
+                    image: 'Tomato.jpg',
+                },
+                {
+                    id: 'onion',
+                    name: 'Onion',
+                    price: 30.00,
+                    image: 'Onion.jpg',
+                },
+                {
+                    id: 'beetroot',
+                    name: 'Beetroot',
+                    price: 40.00,
+                    image: 'Beetroot.jpg',
+                }
+            ];
+            return products.find(item => item.id === productId);
+        }
+        const addToCartButtons = document.querySelectorAll('.btn-add-to-cart');
+        addToCartButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const productId = button.id.replace('add-to-cart-', '');
+                addToCart(productId);
+            });
+        });
+        updateCartCount();
+    </script>
+</body>
+</html>

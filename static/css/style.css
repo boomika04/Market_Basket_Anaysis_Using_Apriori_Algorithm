@@ -1,0 +1,168 @@
+/* Your existing CSS styles here */
+@import url('https://fonts.googleapis.com/css2?family=Arvo&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arvo', sans-serif;
+}
+#home {
+    background: url('/static/images/bg1.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    max-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+}
+body {
+    background-color: #ffb7ce;
+}
+#navbar {
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    padding: .5rem 5rem;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, .5);
+    background: black;
+}
+
+.navbar .navbar-brand {
+    font-size: 25px;
+    font-weight: 800;
+    color: #29f700 !important;
+}
+
+#navbarSupportedContent a {
+    color: #fff;
+    border-bottom: 2px solid transparent;
+}
+
+#navbarSupportedContent a:hover {
+    border-bottom: 2px solid #29f700;
+}
+
+#navbarSupportedContent button {
+    background: #29f700;
+    width: 5rem;
+    border-radius: 15px;
+}
+
+section {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#home {
+    background: url(main4.jpg);
+    background-repeat: no-repeat, no-repeat, no-repeat;
+    max-height: 600px;
+    background-size: 1800px;
+    background-position: center;
+    flex-direction: column;
+    background-repeat: no-repeat;
+    text-align: right;
+}
+
+#home h1 {
+    font-size: 100px;
+    color: black;
+    letter-spacing: 3px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-shadow: 0px 1px 0px #ccc,
+                 0px 2px 0px #ccc,
+                 0px 3px 0px #ccc,
+                 0px 4px 0px #ccc,
+                 0px 5px 0px #ccc,
+                 0px 6px 0px #ccc,
+                 0px 7px 0px #ccc;
+}
+
+#home p {
+    font-size: 30px;
+    color: black;
+}
+
+/*********About**********/
+.scroll-button {
+    background-color: transparent;
+    cursor: pointer;
+    text-align: center;
+    font-size: 24px;
+}
+#about {
+    background: linear-gradient(to right, #ea1d6f, #ea466b 100%);
+}
+
+#about h1 {
+    font-weight: 800;
+    font-size: 50px;
+    color: black;
+}
+
+#about p {
+    color: white;
+}
+
+
+/*****Categories********/
+
+.dropbtn {
+    background-color: #29f700;
+    color: black;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: transparent !important; /* Change the background color to black */
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: white !important; /* Change the text color to white */
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+.dropdown-item:hover {
+    background-color: transparent !important;
+}
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+    background-color: transparent !important;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.custom-card {
+    max-width: 80px; /* Adjust the max-width to your desired size */
+}
+ 
+.move-right{
+    margin-left: 140px;
+}

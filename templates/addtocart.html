@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+          @import url('https://fonts.googleapis.com/css2?family=Arvo&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arvo', sans-serif;
+            font-size: 18px;
+        }
+        body {
+            background: url('/static/images/bg1.jpg') no-repeat center fixed;
+            background-size: cover;
+        }
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f2f2f2;
+        }
+        .sidebar {
+            width: 40%;
+            border-radius: 5px;
+            background-color: #eee;
+            padding: 15px;
+            text-align: center;
+            overflow-y: auto; /* Add this to make the container scrollable */
+            max-height: 80vh; /* Add a max-height to limit the height of the container */
+}
+        .head {
+            background-color: #29f700;
+            border-radius: 3px;
+            height: 40px;
+            padding: 10px;
+            margin-bottom: 20px;
+            color: white;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .foot {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0px;
+            padding: 10px 0px;
+            border-top: 1px solid black;
+        }
+        .cart-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px;
+            background-color: white;
+            border-bottom: 1px solid #aaa;
+            border-radius: 3px;
+            margin: 10px 10px;
+        }
+        .row-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50px;
+            border: 2px solid #29f700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .rowimg {
+            max-width: 43px;
+            max-height: 43px;
+            border-radius: 50%;
+        }
+        .fa-trash:hover {
+            cursor: pointer;
+            color: black;
+        }
+    </style>
+    <script src="https://kit.fontawesome.com/92d70a2fd8.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    {%load static%}
+    <div class="sidebar">
+        <div class="head"><p>My Cart</p></div>
+        <div id="cartItem">Your cart is empty</div>
+        <div class="foot">
+            <h3>Total</h3>
+            <h2 id="total">₹0.00</h2>
+        </div>
+    </div>
+    <script>
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        function displayCart() {
+            const cartItemContainer = document.getElementById('cartItem');
+            const totalElement = document.getElementById('total');
+            if (cart.length === 0) {
+                cartItemContainer.textContent = "Your cart is empty";
+                totalElement.textContent = "₹0.00";
+            } else {
+                let cartItemsHtml = '';
+                let totalPrice = 0;
+                cart.forEach(item => {
+                    const product = getProductById(item.id); 
+                    if (product) {
+                        totalPrice += product.price;
+                        cartItemsHtml += `
+                            <div class="cart-item">
+                                <div class="row-img">
+                                    <img class="rowimg" src="${product.image}" alt="${product.name}">
+                                </div>
+                                <div>${product.name}</div>
+                                <div>₹${product.price.toFixed(2)}</div>
+                                <div><i class="fas fa-trash" onclick="removeFromCart('${product.id}')"></i></div>
+                            </div>
+                        `;
+                    }
+                });
+                cartItemContainer.innerHTML = cartItemsHtml;
+                totalElement.textContent = `₹${totalPrice.toFixed(2)}`;
+            }
+        }
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+           localStorage.setItem('cart', JSON.stringify(cart));
+            displayCart();
+            updateCartCount();
+        }
+        function getProductById(productId) {
+            const products = [
+                {
+                    id: 'carrot',
+                    name: 'Carrot',
+                    price: 35.00,
+                    image: '{% static "images/Carrot.jpg"%}',
+                },
+                {
+                    id: 'potato',
+                    name: 'Potato',
+                    price: 35.00,
+                    image: '{% static "images/Potato.jpg"%}',
+                },
+                {
+                    id: 'tomato',
+                    name: 'Tomato',
+                    price: 20.00,
+                    image: '{% static "images/Tomato.jpg"%}',
+                },
+                {
+                    id: 'onion',
+                    name: 'Onion',
+                    price: 30.00,
+                    image: '{% static "images/Onion.jpg"%}',
+                },
+                {
+                    id: 'beetroot',
+                    name: 'Beetroot',
+                    price: 40.00,
+                    image: '{% static "images/Beetroot.jpg"%}',
+                },
+                {
+                    id: 'apple',
+                    name: 'Apple',
+                    price: 220.00,
+                    image: '{% static "images/apple.jpg"%}',
+                },
+                {
+                    id: 'watermelon',
+                    name: 'Watermelon',
+                    price: 30.00,
+                    image: '{% static "images/Watermelon.jpg"%}',
+                },
+                {
+                    id: 'kiwi',
+                    name: 'Kiwi',
+                    price: 399.00,
+                    image: '{% static "images/Kiwi.jpg"%}',
+                },
+                {
+                    id: 'banana',
+                    name: 'Banana',
+                    price: 65.00,
+                    image: '{% static "images/Banana.jpg"%}',
+                },
+                {
+                    id: 'pineapple',
+                    name: 'Pineapple',
+                    price: 90.00,
+                    image: '{% static "images/Pineapple.jpg"%}',
+                },
+                {
+                    id: 'milk',
+                    name: 'Milk',
+                    price: 66.00,
+                    image: 'milk.jpg',
+                },
+                {
+                    id: 'freshcream',
+                    name: 'Fresh Cream',
+                    price: 45.00,
+                    image: 'Freshcream.jpeg',
+                },
+                {
+                    id: 'butter',
+                    name: 'Butter',
+                    price: 56.00,
+                    image: '{% static "images/Butter.jpg"%}',
+                },
+                {
+                    id: 'cheese',
+                    name: 'Cheese',
+                    price: 102.00,
+                    image: '{% static "images/Cheese.jpg"%}',
+                },
+                {
+                    id: 'yogurt',
+                    name: 'Yogurt',
+                    price: 35.00,
+                    image: '{% static "images/Yogurt.jpg"%}',
+                },
+                {
+                    id: 'almond',
+                    name: 'Almond',
+                    price: 69.00,
+                    image: '{% static "images/Almond.jpg"%}',
+                },
+                {
+                    id: 'cashew',
+                    name: 'Cashew',
+                    price: 240.00,
+                    image: '{% static "images/Cashew.jpg"%}',
+                },
+                {
+                    id: 'pista',
+                    name: 'Pista',
+                    price: 360.00,
+                    image: '{% static "images/Pista.jpg"%}',
+                },
+                {
+                    id: 'raisins',
+                    name: 'Raisins',
+                    price: 41.00,
+                    image: '{% static "images/Raisins.jpg"%}',
+                },
+                {
+                    id: 'walnut',
+                    name: 'Walnut',
+                    price: 143.00,
+                    image: '{% static "images/Walnut.jpg"%}',
+                },
+                {
+                    id: 'fanta',
+                    name: 'Fanta',
+                    price: 48.00,
+                    image: '{% static "images/Fanta.jpg"%}',
+                },
+                {
+                    id: 'mazza',
+                    name: 'Mazza',
+                    price: 40.00,
+                    image: '{% static "images/Mazza.jpg"%}',
+                },
+                {
+                    id: 'mountaindew',
+                    name: 'Mountaindew',
+                    price: 55.00,
+                    image: '{% static "images/Mountaindew.jpg"%}',
+                },
+                {
+                    id: 'pepsi',
+                    name: 'Pepsi',
+                    price: 43.00,
+                    image: '{% static "images/pepsi.jpg"%}',
+                },
+                {
+                    id: 'sprite',
+                    name: 'Sprite',
+                    price: 45.00,
+                    image: '{% static "images/Sprite.jpg"%}',
+                },
+                {
+                    id: 'chilli',
+                    name: 'Chilli',
+                    price: 40.00,
+                    image: '{% static "images/Chilli.jpg"%}',
+                },
+                {
+                    id: 'coriander',
+                    name: 'Coriander',
+                    price: 28.00,
+                    image: '{% static "images/Coriander.jpg"%}',
+                },
+                {
+                    id: 'garam',
+                    name: 'Garam',
+                    price: 41.00,
+                    image: '{% static "images/Garam.jpg"%}',
+                },
+                {
+                    id: 'turmeric',
+                    name: 'Turmeric',
+                    price: 46.00,
+                    image: '{% static "images/Turmeric.jpg"%}',
+                },
+                {
+                    id: 'cumin',
+                    name: 'Cumin',
+                    price: 37.00,
+                    image: '{% static "images/Cumin.jpg"%}',
+                }
+            ];
+            return products.find(item => item.id === productId);
+        }
+        displayCart();
+        function updateCartCount() {
+            const cartCountElement = parent.window.document.getElementById('cart-count');
+            if (cartCountElement) {
+                cartCountElement.textContent = cart.length.toString();
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,174 @@
+<html>
+    <head>
+        <title>login</title>
+        <link rel="stylesheet" href="style1.css">
+        {% load static %}
+<style>
+*{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+body {
+    background: url('/static/images/bg1.jpg') no-repeat center fixed;
+    background-size: cover;
+}
+        .hero {
+            height: 100%;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.4); /* Transparent background */
+            position: absolute;
+            backdrop-filter: blur(5px); /* Apply a blur effect to the background */
+        }
+.form-box{
+    width: 380px;
+    height: 480px;
+    position: relative;
+    margin: 6% auto;
+    background: #ffff;
+    padding: 5px;
+    overflow: hidden;
+}
+.button-box{
+    width: 220px;
+    margin: 35px auto;
+    position: relative;
+    box-shadow: 0 0 20px 9px #ff61241f;
+    border-radius: 30px;
+}
+.toggle-btn{
+    padding: 10px 25px;
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+    outline: none;
+    position: relative; 
+}
+#btn{
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: 100px;
+    height: 100%;
+    background: #29f700;
+    border-radius: 30px;
+    transition: .5s;
+
+}
+.social-icons{
+    margin: 30px auto;
+    text-align : center;
+}
+.social-icons img{
+    width: 30px;
+    margin: 0 12px;
+    box-shadow: 0 0 20px 0 #7f7f7f3d;
+    cursor: pointer;
+    border-radius: 50%;
+}
+.input-group{
+    top: 180px;
+    position: absolute;
+    width: 280px;
+    transition: .5s;
+}
+.input-field{
+    width: 300px;
+    padding: 10px 0px;
+    margin: 5px 0;
+    border-left: 0;
+    border-top: 0;
+    border-right: 0;
+    border-bottom: 1px solid #999;
+    outline: none;
+    background: transparent;
+}
+.submit-btn{
+    width: 85%;
+    padding: 10px 30px;
+    cursor: pointer;
+    display: block;
+    margin: auto;
+    background: #29f700;
+    border: 0;
+    outline: none;
+    border-radius: 30px;
+}
+.chech-box{
+    margin: 30px 10px 30px 0;
+}
+span{
+    color: #777;
+    font-size: 12px;
+    bottom: 63px;
+    position: absolute;
+}
+#login{
+    left: 50px;
+}
+#register{
+    left: 450px;
+}
+</style>
+    </head>
+    <body>
+        {% load static %}
+<div id="login-card" class="form-box">
+        <div id="url"></div>
+        <div class="hero">
+            <div class="form-box">
+                <div class="button-box">
+                    <div id="btn"></div>
+                    <button type="button" class="toggle-btn" onclick="login()">LOG IN</button>
+                    <button type="button" class="toggle-btn" onclick="register()">REGISTER</button>
+                </div>
+                <div class="social-icons">
+                    <img src="{% static 'images/facebook.png' %}">
+                    <img src="{% static 'images/youtube.png' %}">
+                    <img src="{% static '/images/insta.jpg' %}">                    
+                </div>
+                
+                    <form method="post" action="{% url 'index'  %}" id="login" class="input-group" onsubmit="return myFunction();">
+                        {% csrf_token %}
+                    <input type="text" id="username" class="input-field" placeholder="User Id" required>
+                    <input type="password"id="password" class="input-field" placeholder="Enter Password" required>
+                    <input type="checkbox" class="chech-box"><span>Remember Password</span>
+                    <button type="submit" class="submit-btn" onclick="func()">Log In</button>
+                </form>
+                <form id="register" class="input-group">
+                    <input type="text" id="username" class="input-field" placeholder="User Id" required>
+                    <input type="email"id="email" class="input-field" placeholder="Email Id" required>
+                    <input type="password" id="password" class="input-field" placeholder="Enter Password" required>
+              <input type="checkbox" id="condition" class="chech-box"><span>I agree to the terms & conditions</span>
+                    <button type="submit" class="submit-btn" onclick="myfunction()">Register</button>
+                </form>
+            </div>
+            </div>
+  </div>
+          <script>
+            var x=document.getElementById("login");
+            var y=document.getElementById("register");
+            var z=document.getElementById("btn");
+            function register(){
+                x.style.left="-400px";
+                y.style.left="50px";
+                z.style.left="110px";
+            }
+            function login(){
+                x.style.left="50px";
+                y.style.left="450px";
+                z.style.left="0";
+             }
+             function myFunction() {
+    // Perform form validation and submission handling here
+
+    // If the form submission is successful, navigate to a new page
+    window.location.href = "index.html"; // Replace "newpage.html" with the desired URL
+
+    // Return false to prevent the form from actually submitting
+    return false;
+}
+</script>
+           
+    </body>
+</html>
